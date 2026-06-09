@@ -10,6 +10,10 @@ export interface AuthResponse {
   user: User;
 }
 
+export interface MessageResponse {
+  message: string;
+}
+
 export interface StudentProfile {
   id?: number;
   schoolName?: string;

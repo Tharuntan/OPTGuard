@@ -26,4 +26,6 @@ public interface DeadlineRepository extends JpaRepository<Deadline, Long> {
     );
 
     Optional<Deadline> findByIdAndUser(Long id, AppUser user);
+
+    void deleteByUser(AppUser user);
 }

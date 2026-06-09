@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/auth.guard';
 import { ShellComponent } from './layout/shell.component';
+import { AccountComponent } from './pages/account/account.component';
 import { ChecklistComponent } from './pages/checklist/checklist.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DeadlinesComponent } from './pages/deadlines/deadlines.component';
@@ -31,7 +32,8 @@ export const routes: Routes = [
       { path: 'employers', component: EmployersComponent },
       { path: 'deadlines', component: DeadlinesComponent },
       { path: 'email-templates', component: EmailTemplatesComponent },
-      { path: 'checklist', component: ChecklistComponent }
+      { path: 'checklist', component: ChecklistComponent },
+      { path: 'account', component: AccountComponent }
     ]
   },
   { path: '**', redirectTo: '' }

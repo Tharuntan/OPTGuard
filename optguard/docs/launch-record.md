@@ -18,6 +18,7 @@ OPTGuard was built as a public beta web application for F-1 students who need a 
 
 - Public registration and login
 - Public Privacy Policy and Terms pages
+- Account name update, password change, and account deletion
 - Student profile capture
 - OPT and STEM OPT date tracking
 - Deadline generation
@@ -42,6 +43,8 @@ OPTGuard was built as a public beta web application for F-1 students who need a 
 - [x] Add Terms page before inviting strangers
 - [x] Add visible legal disclaimer inside authenticated dashboard
 - [x] Add repeatable production smoke test script
+- [x] Add account self-service controls
+- [x] Add basic auth endpoint rate limiting
 - [ ] Add basic analytics for launch traffic
 - [ ] Add a support/contact email
 - [ ] Buy and connect a custom domain
@@ -55,7 +58,7 @@ Run this from the `optguard` folder:
 node scripts/production-smoke-test.mjs
 ```
 
-The test creates a temporary account and verifies registration, login, profile save, OPT/STEM record save, deadline generation, employer save, email templates, and dashboard summary.
+The test creates a temporary account and verifies registration, login, profile save, OPT/STEM record save, deadline generation, employer save, email templates, dashboard summary, account update, password change, and account deletion.
 
 ## Beta Launch Rules
 

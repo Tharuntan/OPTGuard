@@ -12,4 +12,6 @@ public interface EmployerRepository extends JpaRepository<Employer, Long> {
     Optional<Employer> findFirstByUserAndCurrentTrueOrderByEmploymentStartDateDesc(AppUser user);
 
     Optional<Employer> findByIdAndUser(Long id, AppUser user);
+
+    void deleteByUser(AppUser user);
 }

@@ -2,6 +2,7 @@ const base = process.env.OPTGUARD_API_URL || 'https://optguard-api.onrender.com/
 const origin = process.env.OPTGUARD_ORIGIN || 'https://opt-guard.vercel.app';
 const email = `prod-smoke-${Date.now()}@example.com`;
 const password = 'TestPassword123!';
+const newPassword = 'UpdatedPassword123!';
 
 async function request(path, options = {}) {
   const response = await fetch(`${base}${path}`, {
@@ -73,15 +74,32 @@ const employer = await request('/employers', {
 });
 const templates = await request('/email-templates', { token });
 const dashboard = await request('/dashboard/summary', { token });
+const updatedAccount = await request('/account', {
+  method: 'PUT',
+  token,
+  body: JSON.stringify({ fullName: 'Production Smoke Test Updated' })
+});
+await request('/account/password', {
+  method: 'PUT',
+  token,
+  body: JSON.stringify({ currentPassword: password, newPassword })
+});
 const login = await request('/auth/login', {
   method: 'POST',
-  body: JSON.stringify({ email, password })
+  body: JSON.stringify({ email, password: newPassword })
+});
+await request('/account', { method: 'DELETE', token });
+const deletedLoginStatus = await responseStatus('/auth/login', {
+  method: 'POST',
+  body: JSON.stringify({ email, password: newPassword })
 });
 
 console.log(JSON.stringify({
   email,
   registered: Boolean(auth.token),
   loginWorks: Boolean(login.token),
+  accountUpdated: updatedAccount.fullName === 'Production Smoke Test Updated',
+  accountDeleted: deletedLoginStatus === 403 || deletedLoginStatus === 401,
   profileId: profile.id,
   optRecordId: optRecord.id,
   deadlines: deadlines.length,
@@ -97,4 +115,16 @@ function parseBody(text) {
   } catch {
     return text;
   }
+}
+
+async function responseStatus(path, options = {}) {
+  const response = await fetch(`${base}${path}`, {
+    ...options,
+    headers: {
+      'content-type': 'application/json',
+      origin,
+      ...(options.headers || {})
+    }
+  });
+  return response.status;
 }

@@ -24,6 +24,7 @@ import { AuthService } from '../core/auth.service';
               <li class="nav-item"><a class="nav-link" routerLink="/app/deadlines" routerLinkActive="active">Deadlines</a></li>
               <li class="nav-item"><a class="nav-link" routerLink="/app/email-templates" routerLinkActive="active">Templates</a></li>
               <li class="nav-item"><a class="nav-link" routerLink="/app/checklist" routerLinkActive="active">I-983</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="/app/account" routerLinkActive="active">Account</a></li>
             </ul>
             <div class="d-flex align-items-center gap-3">
               <span class="small text-muted d-none d-lg-inline" *ngIf="auth.user$ | async as user">{{ user.fullName }}</span>

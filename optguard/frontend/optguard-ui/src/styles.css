@@ -512,6 +512,19 @@ a {
   margin-top: 4px;
 }
 
+.danger-panel {
+  border-color: #fecaca;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.delete-form {
+  width: min(360px, 100%);
+  display: grid;
+  gap: 12px;
+}
+
 @media (max-width: 992px) {
   .metric-grid,
   .split-grid,
@@ -520,6 +533,10 @@ a {
   }
 
   .page-title {
+    flex-direction: column;
+  }
+
+  .danger-panel {
     flex-direction: column;
   }
 

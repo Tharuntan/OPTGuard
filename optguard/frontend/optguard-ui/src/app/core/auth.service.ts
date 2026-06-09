@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { AuthResponse, User } from './models';
+import { AuthResponse, MessageResponse, User } from './models';
 import { API_URL } from './runtime-config';
 
 const TOKEN_KEY = 'optguard_token';
@@ -27,6 +27,22 @@ export class AuthService {
     );
   }
 
+  updateAccount(payload: { fullName: string }): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/account`, payload).pipe(
+      tap((user) => this.setUser(user))
+    );
+  }
+
+  changePassword(payload: { currentPassword: string; newPassword: string }): Observable<MessageResponse> {
+    return this.http.put<MessageResponse>(`${this.apiUrl}/account/password`, payload);
+  }
+
+  deleteAccount(): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/account`).pipe(
+      tap(() => this.logout())
+    );
+  }
+
   logout(): void {
     safeLocalStorage()?.removeItem(TOKEN_KEY);
     safeLocalStorage()?.removeItem(USER_KEY);
@@ -41,10 +57,18 @@ export class AuthService {
     return Boolean(this.token());
   }
 
+  currentUser(): User | null {
+    return this.userSubject.value;
+  }
+
   private setSession(response: AuthResponse): void {
     safeLocalStorage()?.setItem(TOKEN_KEY, response.token);
-    safeLocalStorage()?.setItem(USER_KEY, JSON.stringify(response.user));
-    this.userSubject.next(response.user);
+    this.setUser(response.user);
+  }
+
+  private setUser(user: User): void {
+    safeLocalStorage()?.setItem(USER_KEY, JSON.stringify(user));
+    this.userSubject.next(user);
   }
 
   private readUser(): User | null {

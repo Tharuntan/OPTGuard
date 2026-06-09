@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OptRecordRepository extends JpaRepository<OptRecord, Long> {
     Optional<OptRecord> findByUser(AppUser user);
+
+    void deleteByUser(AppUser user);
 }

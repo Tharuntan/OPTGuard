@@ -30,6 +30,18 @@ public final class ApiDtos {
     public record UserResponse(Long id, String email, String fullName, Instant createdAt) {
     }
 
+    public record AccountUpdateRequest(@NotBlank String fullName) {
+    }
+
+    public record ChangePasswordRequest(
+            @NotBlank String currentPassword,
+            @NotBlank String newPassword
+    ) {
+    }
+
+    public record MessageResponse(String message) {
+    }
+
     public record StudentProfileRequest(
             String schoolName,
             String dsoName,
