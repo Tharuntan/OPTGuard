@@ -32,6 +32,7 @@ import { AuthService } from '../../core/auth.service';
         </form>
 
         <p class="mt-3 mb-0 small">New here? <a routerLink="/register">Create an account</a></p>
+        <p class="auth-legal"><a routerLink="/privacy">Privacy</a> · <a routerLink="/terms">Terms</a></p>
       </section>
     </main>
   `

@@ -7,6 +7,7 @@ import { DeadlinesComponent } from './pages/deadlines/deadlines.component';
 import { EmailTemplatesComponent } from './pages/email-templates/email-templates.component';
 import { EmployersComponent } from './pages/employers/employers.component';
 import { LandingComponent } from './pages/landing/landing.component';
+import { PrivacyComponent, TermsComponent } from './pages/legal/legal.component';
 import { LoginComponent } from './pages/login/login.component';
 import { OptRecordComponent } from './pages/opt-record/opt-record.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -16,6 +17,8 @@ export const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'privacy', component: PrivacyComponent },
+  { path: 'terms', component: TermsComponent },
   {
     path: 'app',
     component: ShellComponent,

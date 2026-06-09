@@ -17,6 +17,7 @@ OPTGuard was built as a public beta web application for F-1 students who need a 
 ## What Is Live
 
 - Public registration and login
+- Public Privacy Policy and Terms pages
 - Student profile capture
 - OPT and STEM OPT date tracking
 - Deadline generation
@@ -35,15 +36,26 @@ OPTGuard was built as a public beta web application for F-1 students who need a 
 - [x] CORS restricted to the Vercel frontend domain
 - [x] Demo credentials removed from the public login screen
 - [x] Runtime API URL configured through Vercel environment variables
-- [ ] Complete live registration smoke test from Vercel
-- [ ] Complete login smoke test from Vercel
-- [ ] Add Privacy Policy page before inviting strangers
-- [ ] Add Terms page before inviting strangers
-- [ ] Add visible legal disclaimer inside authenticated dashboard
+- [x] Complete live registration smoke test from Vercel origin
+- [x] Complete login smoke test from Vercel origin
+- [x] Add Privacy Policy page before inviting strangers
+- [x] Add Terms page before inviting strangers
+- [x] Add visible legal disclaimer inside authenticated dashboard
+- [x] Add repeatable production smoke test script
 - [ ] Add basic analytics for launch traffic
 - [ ] Add a support/contact email
 - [ ] Buy and connect a custom domain
 - [ ] Review Render database backup limits before paid launch
+
+## Production Smoke Test
+
+Run this from the `optguard` folder:
+
+```bash
+node scripts/production-smoke-test.mjs
+```
+
+The test creates a temporary account and verifies registration, login, profile save, OPT/STEM record save, deadline generation, employer save, email templates, and dashboard summary.
 
 ## Beta Launch Rules
 

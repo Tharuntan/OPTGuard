@@ -59,6 +59,13 @@ import { RouterLink } from '@angular/router';
               </div>
             </div>
           </div>
+          <div class="landing-footer">
+            <span>Public beta for OPT/STEM OPT planning.</span>
+            <div class="d-flex gap-3">
+              <a routerLink="/privacy">Privacy</a>
+              <a routerLink="/terms">Terms</a>
+            </div>
+          </div>
         </div>
       </section>
     </main>

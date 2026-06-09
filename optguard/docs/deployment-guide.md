@@ -132,6 +132,11 @@ For free beta:
 - Confirm no demo account is publicly advertised.
 - Confirm Render `CORS_ALLOWED_ORIGINS` exactly matches the Vercel frontend domain.
 - Confirm Vercel `OPTGUARD_API_URL` is set to the Render API base URL.
+- Run the production smoke test:
+
+```bash
+node scripts/production-smoke-test.mjs
+```
 
 ## Legal Reminder
 

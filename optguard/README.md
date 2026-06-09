@@ -118,6 +118,12 @@ Current public beta endpoints:
 
 See [docs/launch-record.md](docs/launch-record.md) for the launch record and production readiness checklist.
 
+Run a production smoke test:
+
+```bash
+node scripts/production-smoke-test.mjs
+```
+
 ## Demo User
 
 When `SEED_DEMO_DATA=true` or omitted, the backend seeds:
