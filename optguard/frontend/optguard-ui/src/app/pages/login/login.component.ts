@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -31,7 +32,6 @@ import { AuthService } from '../../core/auth.service';
         </form>
 
         <p class="mt-3 mb-0 small">New here? <a routerLink="/register">Create an account</a></p>
-        <p class="small text-muted mt-3 mb-0">Demo login: demo&#64;optguard.test / Password123!</p>
       </section>
     </main>
   `
@@ -44,8 +44,8 @@ export class LoginComponent {
   loading = false;
   error = '';
   form = this.fb.nonNullable.group({
-    email: ['demo@optguard.test', [Validators.required, Validators.email]],
-    password: ['Password123!', [Validators.required]]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]]
   });
 
   submit(): void {
@@ -56,10 +56,17 @@ export class LoginComponent {
     this.error = '';
     this.auth.login(this.form.getRawValue()).subscribe({
       next: () => void this.router.navigate(['/app/dashboard']),
-      error: () => {
-        this.error = 'Login failed. Check your email and password.';
+      error: (response: unknown) => {
+        this.error = authErrorMessage(response, 'Login failed. Check your email and password.');
         this.loading = false;
       }
     });
   }
+}
+
+function authErrorMessage(response: unknown, fallback: string): string {
+  if (response instanceof HttpErrorResponse && typeof response.error?.message === 'string') {
+    return response.error.message;
+  }
+  return fallback;
 }

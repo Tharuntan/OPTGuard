@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -60,10 +61,17 @@ export class RegisterComponent {
     this.error = '';
     this.auth.register(this.form.getRawValue()).subscribe({
       next: () => void this.router.navigate(['/app/dashboard']),
-      error: () => {
-        this.error = 'Registration failed. The email may already be registered.';
+      error: (response: unknown) => {
+        this.error = authErrorMessage(response, 'Registration failed. Please check your details and try again.');
         this.loading = false;
       }
     });
   }
+}
+
+function authErrorMessage(response: unknown, fallback: string): string {
+  if (response instanceof HttpErrorResponse && typeof response.error?.message === 'string') {
+    return response.error.message;
+  }
+  return fallback;
 }

@@ -2,6 +2,11 @@
 
 This guide uses Render for the Spring Boot API and PostgreSQL, and Vercel for the Angular frontend.
 
+Current public beta:
+
+- Frontend: `https://opt-guard.vercel.app`
+- Backend health: `https://optguard-api.onrender.com/api/health`
+
 ## What You Need
 
 - GitHub repository containing the `optguard` folder
@@ -69,7 +74,7 @@ https://YOUR-PROJECT.vercel.app
 After Vercel gives you the frontend URL, update the Render backend environment variable:
 
 ```text
-CORS_ALLOWED_ORIGINS=https://YOUR-PROJECT.vercel.app
+CORS_ALLOWED_ORIGINS=https://opt-guard.vercel.app
 ```
 
 Redeploy the backend.
@@ -116,13 +121,17 @@ For free beta:
 ## 8. Post-Launch Checklist
 
 - Register a test account.
+- Log out and log back in with the same account.
 - Add profile data.
 - Add OPT/STEM dates.
 - Generate deadlines.
 - Add employer.
 - Mark a deadline complete.
 - Copy an email template.
+- Test the app in a private/incognito browser window.
 - Confirm no demo account is publicly advertised.
+- Confirm Render `CORS_ALLOWED_ORIGINS` exactly matches the Vercel frontend domain.
+- Confirm Vercel `OPTGUARD_API_URL` is set to the Render API base URL.
 
 ## Legal Reminder
 

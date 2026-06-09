@@ -111,6 +111,13 @@ Use [docs/deployment-guide.md](docs/deployment-guide.md) to deploy:
 - Frontend on Vercel
 - Free beta mode with `SEED_DEMO_DATA=false`
 
+Current public beta endpoints:
+
+- Frontend: `https://opt-guard.vercel.app`
+- Backend health: `https://optguard-api.onrender.com/api/health`
+
+See [docs/launch-record.md](docs/launch-record.md) for the launch record and production readiness checklist.
+
 ## Demo User
 
 When `SEED_DEMO_DATA=true` or omitted, the backend seeds:
