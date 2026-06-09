@@ -1,3 +1,6 @@
+<img width="1792" height="995" alt="Screenshot 2026-06-08 at 20 05 59" src="https://github.com/user-attachments/assets/a9e7f7a6-4042-42e9-a821-06116f33b93e" />
+
+
 # OPTGuard
 
 OPTGuard is an MVP web application for F-1 students tracking OPT and STEM OPT dates, reminders, unemployment days, employer records, DSO email templates, and an I-983 checklist.
